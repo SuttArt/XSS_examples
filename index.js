@@ -33,7 +33,6 @@ fetch("get-comments")
 
 document.getElementById('inputButton').addEventListener('click', () => {
     const userInput = document.getElementById('userInput').value;
-    console.log("qweqwe");
     document.getElementById('output').innerHTML = `User input: ${userInput}`; // Vulnerable to XSS
 });
 
