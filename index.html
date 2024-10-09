@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Examples</title>
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+<div>
+    Example 1: Reflected XSS
+    <br>
+    How to:
+    <br>
+    If a user search for: < script>alert('XSS')< /script>, the script will be executed immediately, causing an XSS vulnerability.
+</div>
+<br>
+<!-- Example 1: Reflected XSS -->
+<form action="/search" method="GET">
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="q">
+    <button type="submit">Search</button>
+</form>
+<!-- If a user accesses: /search?q=<script>alert('XSS')</script>, the script will be executed immediately, causing an XSS vulnerability. -->
+
+<br>
+<br>
+<div>
+    Example 2: Persistent XSS
+    <br>
+    How to:
+    <br>
+    If a malicious user submits a comment like: < script>alert('XSS Stored!')< /script>, any user visiting <a href="http://localhost:3000/show-comments">Comments Page</a> will see the alert, indicating stored XSS.
+</div>
+<!-- Example 2: Persistent XSS -->
+<form id="commentForm">
+    <label for="comment">Leave a comment:</label>
+    <input type="text" id="comment" name="comment">
+    <button type="button" id="submit_btn">Submit Comment</button>
+</form>
+<div id="commentsSection">
+    <ul id="commentsList"></ul>
+</div>
+
+
+
+<!-- If a malicious user submits a comment like: <script>alert('XSS Stored!')</script>, any user visiting will see the alert, indicating stored XSS. -->
+<br>
+<br>
+
+<div>
+    Example 3: DOM-Based XSS
+    <br>
+    How to:
+    <br>
+    If userInput contains: < img src=x onerror="alert('DOM XSS')">, the script will be executed, demonstrating a DOM-based XSS vulnerability.
+</div>
+<!-- Example 3: DOM-Based XSS -->
+<div>
+    <label for="userInput">Enter some input:</label>
+    <input type="text" id="userInput">
+    <button id="inputButton">Submit</button>
+</div>
+<div id="output"></div>
+<!--If userInput contains: <img src=x onerror=alert('DOM XSS')>, the script will be executed, demonstrating a DOM-based XSS vulnerability.-->
+
+</body>
+</html>
