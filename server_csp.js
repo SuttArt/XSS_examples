@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 // Simulating storage, e.g., a database
 const comments = [];
